@@ -23,6 +23,10 @@ public class SlidingTilePuzzle implements Problem<List<Integer>, String> {
         SIZE = (int) Math.sqrt(INITIAL_STATE.size());
 
     }
+    public SlidingTilePuzzle(List<Integer> estimates) {
+        SIZE = (int) Math.sqrt(INITIAL_STATE.size());
+
+    }
 
     public List<Tuple<List<Integer>, String>> execution(List<Integer> s) {
         int emptyCellPosition = -1;
