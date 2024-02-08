@@ -1,4 +1,4 @@
-package search_solutions;
+package search_solutions.sliding_tile_3x3;
 
 import core_search.BaseSearch;
 import core_search.Node;
@@ -9,25 +9,25 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class SlidingTileAStar extends BaseSearch<List<Integer>, String> {
+public class SlidingTileGBFS extends BaseSearch<List<Integer>, String> {
 
-    public SlidingTileAStar(List<Integer> initialState) {
-        super(new SlidingTilePuzzle(initialState), new SortedQueue<>(new CompareSum()));
+    public SlidingTileGBFS(List<Integer> initialState) {
+        super(new SlidingTilePuzzle(initialState), new SortedQueue<>(new CompareEstimates()));
     }
 
     public static void main(String[] args) {
         List<Integer> initialState = new ArrayList<>(List.of(7, 2, 4, 5, 0, 6, 8, 3, 1));
-        SlidingTileAStar agent = new SlidingTileAStar(initialState);
+        SlidingTileGBFS agent = new SlidingTileGBFS(initialState);
         agent.search();
     }
 
-    public static class CompareSum implements Comparator<Node<List<Integer>, String>> {
+    public static class CompareEstimates implements Comparator<Node<List<Integer>, String>> {
         @Override
         public int compare(Node<List<Integer>, String> o1, Node<List<Integer>, String> o2) {
-            int sumAndCost1 = o1.getPathCost() + heuristic(o1.getState());
-            int sumAndCost2 = o2.getPathCost() + heuristic(o2.getState());
+            int estimate1 = heuristic(o1.getState());
+            int estimate2 = heuristic(o2.getState());
 
-            return Integer.compare(sumAndCost1, sumAndCost2);
+            return Integer.compare(estimate1, estimate2);
         }
     }
 
@@ -36,3 +36,4 @@ public class SlidingTileAStar extends BaseSearch<List<Integer>, String> {
         return new SlidingTilePuzzle().sumOfDistances(state);
     }
 }
+

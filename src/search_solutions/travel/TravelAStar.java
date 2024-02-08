@@ -1,14 +1,11 @@
-package search_solutions;
+package search_solutions.travel;
 
 import core_search.BaseSearch;
-import core_search.FIFOQueue;
 import core_search.Node;
 import core_search.SortedQueue;
-import search_problems.SlidingTilePuzzle;
 import search_problems.Travel;
 
 import java.util.Comparator;
-import java.util.List;
 
 /**
  * Solving the Romania travel problem using A* search

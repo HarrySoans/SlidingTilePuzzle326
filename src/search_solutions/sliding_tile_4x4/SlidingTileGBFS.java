@@ -1,9 +1,9 @@
-package search_solutions;
+package search_solutions.sliding_tile_4x4;
 
 import core_search.BaseSearch;
 import core_search.Node;
 import core_search.SortedQueue;
-import search_problems.SlidingTilePuzzle;
+import search_problems.SlidingTilePuzzle4x4;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -12,11 +12,11 @@ import java.util.List;
 public class SlidingTileGBFS extends BaseSearch<List<Integer>, String> {
 
     public SlidingTileGBFS(List<Integer> initialState) {
-        super(new SlidingTilePuzzle(initialState), new SortedQueue<>(new CompareEstimates()));
+        super(new SlidingTilePuzzle4x4(initialState), new SortedQueue<>(new CompareEstimates()));
     }
 
     public static void main(String[] args) {
-        List<Integer> initialState = new ArrayList<>(List.of(7, 2, 4, 5, 0, 6, 8, 3, 1));
+        List<Integer> initialState = new ArrayList<>(List.of(12,1,2,15,11,6,5,8,7,10,9,4,0,13,14,3));
         SlidingTileGBFS agent = new SlidingTileGBFS(initialState);
         agent.search();
     }
@@ -33,7 +33,7 @@ public class SlidingTileGBFS extends BaseSearch<List<Integer>, String> {
 
     private static int heuristic(List<Integer> state) {
 
-        return new SlidingTilePuzzle().sumOfDistances(state);
+        return new SlidingTilePuzzle4x4().sumOfDistances(state);
     }
 }
 

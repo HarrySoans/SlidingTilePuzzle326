@@ -1,4 +1,4 @@
-package search_solutions;
+package search_solutions.travel;
 
 import core_search.BaseSearch;
 import core_search.LIFOQueue;
